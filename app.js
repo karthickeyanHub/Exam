@@ -11,6 +11,7 @@ let submitted = false;
 let startTime = 0;
 let elapsedSeconds = 0;
 let timerInterval = null;
+let examRange = null;
 
 function shuffle(arr) {
   for (let i = arr.length - 1; i > 0; i--) {
@@ -80,6 +81,11 @@ function processExam(raw) {
 async function init() {
   const params = new URLSearchParams(location.search);
   examName = params.get('exam') || '';
+  const from = parseInt(params.get('from'), 10);
+  const to = parseInt(params.get('to'), 10);
+  if (Number.isInteger(from) && Number.isInteger(to) && from >= 1 && to >= from) {
+    examRange = { from: from, to: to };
+  }
   $('examTitle').textContent = examName || 'Exam';
 
   try {
@@ -98,10 +104,30 @@ async function init() {
 }
 
 function startExam(data) {
-  const raw = data[examName];
-  if (!raw || !raw.length) {
+  const rawAll = data[examName];
+  if (!rawAll || !rawAll.length) {
     $('questionArea').innerHTML = '<p class="feedback">Exam not found.</p>';
     return;
+  }
+
+  let raw = rawAll.slice();
+  if (examRange) {
+    const from = Math.min(examRange.from, raw.length);
+    const to = Math.min(examRange.to, raw.length);
+    if (from > to) {
+      $('questionArea').innerHTML = '<p class="feedback">Invalid question range for this exam.</p>';
+      return;
+    }
+    raw = raw.slice(from - 1, to);
+    const note = $('rangeNote');
+    note.classList.remove('hidden');
+    note.textContent =
+      'Selected questions ' +
+      examRange.from +
+      '\u2013' +
+      examRange.to +
+      ' of ' +
+      rawAll.length;
   }
 
   shuffle(raw);

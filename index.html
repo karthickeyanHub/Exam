@@ -15,6 +15,40 @@
     <div id="examGrid" class="exam-grid"></div>
     <p id="loadError" class="feedback hidden"></p>
   </div>
+
+  <div id="examModal" class="modal-overlay hidden">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalExamName">
+      <h2 id="modalExamName" class="modal-title"></h2>
+      <p id="modalExamCount" class="modal-subtitle"></p>
+      <div class="mode-options">
+        <button id="modeAllBtn" class="mode-btn active" type="button">
+          <span class="mode-title">All Questions</span>
+          <span class="mode-desc">Attempt every question in the exam</span>
+        </button>
+        <button id="modeRangeBtn" class="mode-btn" type="button">
+          <span class="mode-title">Question Range</span>
+          <span class="mode-desc">Only attempt a range of questions</span>
+        </button>
+      </div>
+      <div id="rangeInputs" class="range-inputs hidden">
+        <label>
+          <span>From</span>
+          <input id="rangeFrom" type="number" min="1" inputmode="numeric" />
+        </label>
+        <span class="range-sep">to</span>
+        <label>
+          <span>To</span>
+          <input id="rangeTo" type="number" min="1" inputmode="numeric" />
+        </label>
+      </div>
+      <p id="modalError" class="modal-error hidden"></p>
+      <div class="modal-actions">
+        <button id="modalCancelBtn" class="btn btn-secondary" type="button">Cancel</button>
+        <button id="modalStartBtn" class="btn btn-primary" type="button">Start Exam</button>
+      </div>
+    </div>
+  </div>
+
   <script src="fallback-data.js"></script>
   <script src="index.js"></script>
 </body>
