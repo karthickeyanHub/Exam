@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exam</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="exam-header">
+    <div class="header-top">
+      <a class="back-link" href="index.html">&larr; Exams</a>
+      <h1 id="examTitle" class="exam-title"></h1>
+      <div id="timer" class="timer">00:00</div>
+    </div>
+    <div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
+    <p id="progressText" class="progress-text"></p>
+  </header>
+
+  <main id="questionArea" class="question-area">
+    <div class="question-card">
+      <p id="reviewBanner" class="review-banner hidden">
+        Review mode: correct answers are highlighted in green, your incorrect selections in red.
+      </p>
+      <h2 id="questionText" class="question-text"></h2>
+      <div id="optionsList" class="options-list"></div>
+      <p id="feedback" class="feedback"></p>
+      <div class="controls">
+        <button id="prevBtn" class="btn btn-secondary" type="button">Previous</button>
+        <button id="revealBtn" class="btn btn-info" type="button">Reveal Answer</button>
+        <button id="nextBtn" class="btn btn-secondary" type="button">Next</button>
+        <button id="scoreBackBtn" class="btn btn-secondary hidden" type="button">Back to Score</button>
+        <button id="submitBtn" class="btn btn-primary" type="button">Submit Exam</button>
+      </div>
+    </div>
+  </main>
+
+  <section id="scoreArea" class="score-area hidden"></section>
+
+  <script src="fallback-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
