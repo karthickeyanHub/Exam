@@ -1414,6 +1414,419 @@ window.FALLBACK_DATA = {
         "Use multiple record types, page layouts, and profiles",
         "Use record types with field sets and restrict editing fields using field-level security"
       ]
+    },
+    {
+      "question": "Cloud Kicks conducts an evaluation of sales reps with a custom object that houses a scorecar The company wants to ensure that only the sales reps, their managers, and their manager ' s executives can view the rep ' s scorecard, but also prevent the Reps from being able to view the executive comment fields on their review. How should these requirements be met?",
+      "Answer": "B",
+      "Options": [
+        "Use a private sharing model granting record access using custom settings; manage field access with record types and page layouts.",
+        "Use a private sharing model granting record access using hierarchy; manage field access with field-level security.",
+        "Use a private sharing model granting record access using custom settings; manage field access with page layouts and field-level security.",
+        "Use a private sharing model granting record access using hierarchy; manage field access with record types and field-level security."
+      ]
+    },
+    {
+      "question": "AW Computing has a custom object for service plans. A service plan needs to be associated to one and only one contact. The support manager noticed if the wrong contact is associated, the reps are unable to change the contact. The app builder already confirmed the user has correct access to the field and there are no validations associated with the service plans. What could be causing the issue?",
+      "Answer": "B",
+      "Options": [
+        "The Read Only radio button, Allows users with at least Read access to the Master record to create, edit, or delete related Detail records, is selected.",
+        "The Allow reparenting checkbox, Child records can be reparented to other parent records after they are created, is unchecked.",
+        "The Read/Write radio button, Allows users with at least Read/Write access to the Master record to create, edit, or delete related Detail records, is selected.",
+        "The Allow reparenting checkbox, Child records can be reparented to other parent records after they are created, is checked."
+      ]
+    },
+    {
+      "question": "Cloud Kicks wants to set up a new opportunity approval process and execute various action items based on the initial submission. Which three action types should an app builder use in the approval process? Choose 3 answers",
+      "Answer": "ABC",
+      "Options": [
+        "Email Alert",
+        "Outbound Message",
+        "Task",
+        "Invocable Flow",
+        "Invocable Process Builder"
+      ]
+    },
+    {
+      "question": "Due to the complexity of the Universal Containers sandbox release schedule and requirements, it is advised that change sets are used as often as possible to migrate from one environment to another. Which three common items can an app builder move when using a change set? Choose 3 answers",
+      "Answer": "CDE",
+      "Options": [
+        "Web-to-lead",
+        "Standard fields",
+        "Custom object",
+        "Apex class",
+        "Custom field"
+      ]
+    },
+    {
+      "question": "An app builder installed a custom Lightning component from AppExchange. What should be done next in order to configure the component for use in a record page?",
+      "Answer": "B",
+      "Options": [
+        "Edit a record page using the Page Layout editor > Drag the Visualforce component onto the page.",
+        "Edit a record page using Lightning App Builder > Drag the component onto the page.",
+        "Edit a record page using App Manager > Drag the component onto the page.",
+        "Edit a record page using the Page Layout editor > Drag the component onto the page."
+      ]
+    },
+    {
+      "question": "An app builder has a custom component they want to make available on the utility bar, but the component is unavailable. How should the component be tagged?",
+      "Answer": "C",
+      "Options": [
+        "For use in App Manager.",
+        "For use on record pages.",
+        "For use on the utility bar.",
+        "For use in Lightning App Builder."
+      ]
+    },
+    {
+      "question": "Universal Containers has deployed custom tabs to Production via change sets, without including the profile settings. What statement is true about the visibility of custom tabs in Enterprise Edition?",
+      "Answer": "A",
+      "Options": [
+        "Custom tabs are not deployed.",
+        "Custom tabs are default on for all users.",
+        "Custom tabs are not hidden for all users.",
+        "Custom tabs are default off for all users."
+      ]
+    },
+    {
+      "question": "Universal Containers expects impacts to operations due to increased demand. The executive team will reach out to current customers and wants to see the number of open cases for the account and parent account. What should an app builder use to display the number of open cases on the account page?",
+      "Answer": "C",
+      "Options": [
+        "Flow",
+        "Approval Process",
+        "Roll-up summary",
+        "Custom object"
+      ]
+    },
+    {
+      "question": "DreamHouseRealty (DR) is expanding into subsidized housing by partnering with local government entitles. DR uses Sales Cloud and has enabled field history tracking on the Opportunity object. Due to increased Information requirements, the App Dev team is changing Text Area (Long) fields to Rich Text fields to allow for up to 1,000 characters and better descriptions. Which two considerations should be made by the team? Choose 2 answers",
+      "Answer": "BC",
+      "Options": [
+        "Rich text field values of all lengths are displayed fully in reports.",
+        "Data loss may occur when changing custom field types.",
+        "Field History Tracking records value changes of 255 characters or less.",
+        "Audit Trail is available through REST API extracts."
+      ]
+    },
+    {
+      "question": "Service Agents are required to confirm a user's identity before providing support information over the phone. What feature can an app builder use to help agents meet this requirement?",
+      "Answer": "C",
+      "Options": [
+        "Add Path to the top of the Case layout.",
+        "Include Surveys as a Case related list.",
+        "Guided Action Flows on the record page.",
+        "Case validation rules"
+      ]
+    },
+    {
+      "question": "Universal Containers wants users to have access to the pricing guidelines document when viewing a Contract related to an Account. What feature should an app builder use to create easy access to the document?",
+      "Answer": "D",
+      "Options": [
+        "Quick Action on the Contracts object",
+        "Quick Action on the Account object",
+        "A custom detail page link on the Account object",
+        "A custom detail page link on the Contract object"
+      ]
+    },
+    {
+      "question": "Universal Containers wants to collaborate with its customers within Salesforce, and has decided to enable the Allow Customer Invitations Chatter Setting. What permission is granted to Customers when invited to a Chatter Group?",
+      "Answer": "B",
+      "Options": [
+        "The ability to @mention accounts of which they are a contact.",
+        "The ability to interact with members of their groups.",
+        "The ability to request access to public groups.",
+        "The ability to invite members to groups of which they are a member."
+      ]
+    },
+    {
+      "question": "Universal Containers created a custom object called Component to capture details about products sold. What approach should an app builder take to show Component as a related list on Product?",
+      "Answer": "B",
+      "Options": [
+        "Create a master-detail relationship on Product to Component. Add the Component related list to the Product page layout",
+        "Create a lookup relationship on Component to Product. Add the Component related list to the Product page layout",
+        "Create a junction object to relate Component and Product. Add the Component related list to the Product page layout",
+        "Create a roll-up on Product. Add the Component related list to the Product page layout"
+      ]
+    },
+    {
+      "question": "Managers at Universal Containers want a quick way to create additional accounts to form a hierarchy from a Parent Account record They want to auto-populate five fields based on the parent to make it easier for users to create the child accounts quickly. What should the app builder recommend?",
+      "Answer": "D",
+      "Options": [
+        "Add Path on Account hierarchy",
+        "Add a custom link on Account",
+        "Customize a Global Quick Action",
+        "Create a custom action"
+      ]
+    },
+    {
+      "question": "Universal Containers has a single Contact Lightning record page. A component takes up a lot of room on the page and is NOT needed by users with a Marketing profile. What should the app builder use to solve this Issue?",
+      "Answer": "D",
+      "Options": [
+        "Detail page layouts",
+        "AppExchange",
+        "Field-level security",
+        "Component visibility filter"
+      ]
+    },
+    {
+      "question": "Cloud Kicks (CK) wants to track orders against inventory, ensuring its ability to fulfill order requests. CK created a junction object called Request Inventory to enable many-to-many relationships with the Inventory and Order objects. What does the app builder need to provide to ensure users can view Request Inventory records?",
+      "Answer": "C",
+      "Options": [
+        "Apex-based sharing on the first master object.",
+        "Read access to the first master object.",
+        "Read access to both master objects.",
+        "Sharing rules on Request Inventory object."
+      ]
+    },
+    {
+      "question": "Cloud Kicks Is redefining its entire business process to convert the Manager Notes field from a long text area files. The goal is to encourage managers to be more concise In their comments and stay at 255 characters or less. There is preexisting information In the Manager Notes field that often is well beyond the character limit. What would happen to any existing information if the app builder tries to convert a preexisting long text area field to text area'",
+      "Answer": "A",
+      "Options": [
+        "Preexisting information will truncate to the first 255 characters.",
+        "Preexisting Information in the field will be completely lost.",
+        "Preexisting information will remain even if it was over 255 characters.",
+        "Preexisting information will cause an error message to pop up."
+      ]
+    },
+    {
+      "question": "A user is unable to use inline editing on a list view. A quick check verifies the user should be able to perform inline editing as they have been Assigned the appropriate permissions. Which condition should the app builder review?",
+      "Answer": "B",
+      "Options": [
+        "If the list view selected is locked by another user",
+        "If the list view restricts sharing for the user",
+        "If the list view contains a chart created by the user",
+        "If the list view contains more than one record type"
+      ]
+    },
+    {
+      "question": "An app builder needs a custom solution and is considering using either AppExchange or their local developer community. The app builder wants to minimize the need for manual maintenance. What should the app builder consider?",
+      "Answer": "C",
+      "Options": [
+        "An unmanaged package from AppExchange",
+        "An open-source custom development",
+        "A managed package from AppExchange",
+        "An open-source unmanaged package"
+      ]
+    },
+    {
+      "question": "Cloud Kicks wants to display 10 key fields at once in a separate section at the top of opportunity records on the desktop. Which component should an app builder add to the record page to enable this functionality?",
+      "Answer": "C",
+      "Options": [
+        "Accordion",
+        "Custom Lightning Web Component",
+        "Highlights Panel",
+        "Path"
+      ]
+    },
+    {
+      "question": "Sales reps at Cloud Kicks (CK) forget to submit for approval when CK needs orders reviewed before close won. CK wants to automatically submit opportunities into the Secure Commitment Stage to eliminatemanual submission. Which three features would meet the business requirements? Choose 3 answers",
+      "Answer": "BCE",
+      "Options": [
+        "Workflow",
+        "Process Builder",
+        "Apex",
+        "Chatter action",
+        "Flow"
+      ]
+    },
+    {
+      "question": "Cloud Kicks wants to make sure that users without the Marketing role are unable to update the Contact Retail Opt In picklist field to Yes. What validation rule would an app builder use to prevent other users from making this update?",
+      "Answer": "A",
+      "Options": [
+        "AND( $UserRole.Name != 'Marketing',ISCHANGED(Retail_Opt_In__c), ISPICKVAL(Retail_0pt_In_c,\"Yes\") )",
+        "AND( $UserRole.Name != 'Marketing', Retail_Opt_In_c = \"Yes\" )",
+        "AND( $UserRole.Name = 'Marketing', ISPICKVAL(Retail_Opt_In_c,\"Yes\") )",
+        "AND( $UserRole.Name = 'Marketing', Retail_Opt_In__c= \"Yes\" )"
+      ]
+    },
+    {
+      "question": "An app builder is creating a custom object called Testimonial__c and wants to connect Testimonial__c records with both the submitter's Contact record and Account record. If the Account is deleted, the Testimonial__c should also be deleted. If the Contact is deleted, but the Account remains, the Testimonial__c should remain. How should this be accomplished?",
+      "Answer": "B",
+      "Options": [
+        "Create a lookup relationship from Testimonial__c to Account and a master-detail relationship from Testimonial__c to Contact.",
+        "Create a master-detail relationship from Testimonial__c to Account and a lookup relationship from Testimonial__c to Contact.",
+        "Make Testimonial_c a junction object between Account and Contact using master-detail relationships.",
+        "Make both the Contact and Account fields required on the Testimonial__c object and create lookup relationships from Testimonia"
+      ]
+    },
+    {
+      "question": "Universal Containers wants to test code against a subset of production data that is under 5 GB. Additionally, Universal Containers wants to refresh this sandbox every weekend. What type of sandbox should be used to accomplish this?",
+      "Answer": "D",
+      "Options": [
+        "Developer Pro",
+        "Developer",
+        "Full",
+        "Partial Copy"
+      ]
+    },
+    {
+      "question": "Cloud Kicks (CK) wants to quickly insert a list of over 1 million net new Accounts. The template based on CK ' s data model was used to populate The list. Which tool should be used?",
+      "Answer": "A",
+      "Options": [
+        "Data Loader",
+        "Import Wizard",
+        "Schema Builder",
+        "Lightning Object Creator"
+      ]
+    },
+    {
+      "question": "Sales Managers want to be automatically notified any time there is a change to an Opportunity Close Date and want these changes to be tracked on the Opportunity. Which two configurations should an app builder recommend? (Choose two.)",
+      "Answer": "BD",
+      "Options": [
+        "Activate Historical Trending for Opportunities",
+        "Use Process Builder on Opportunities and a Chatter post action",
+        "Create an Opportunity outbound message",
+        "Enable Feed Tracking on Opportunities"
+      ]
+    },
+    {
+      "question": "A Cloud Kicks employee submitted an opportunity for approval by their manager. What would happen if the employee attempts to edit the description field after submission?",
+      "Answer": "C",
+      "Options": [
+        "User will see the record is now owned by their manager.",
+        "User will be able to edit the description field only.",
+        "User will be presented with a 'Record Lock' notification.",
+        "User will be able to edit the name, but unable to edit the description."
+      ]
+    },
+    {
+      "question": "Ursa Major Solar wants to automate a welcome email to new clients and include a customized survey about their buying experience. An app builder is tasked with this project and has very little time to build the solution from scratch, but still needs to be able to fully customize the solution. What should the app builder do to meet the deadline and custom requirements?",
+      "Answer": "B",
+      "Options": [
+        "Work with a developer to create custom Apex code and a Lightning web component survey to meet the criteria,",
+        "Use Salesforce flow to build the survey declaratively to meet the criteria and send it to the customer as an email.",
+        "Choose a managed package from AppExchange that closely meets the requirements of the project, restricts programmatic development, but allows declarative development",
+        "Choose an unmanaged package from Appexchange that closely meets the requirements of the project and allows programmatic development."
+      ]
+    },
+    {
+      "question": "When an opportunity is closed date is pushed more than 30 days, manager approval is required. An approval process is in place but reps frequently forget to submit for approval to run the process. How can an app builder ensure that these opportunities are submitted into the approval process?",
+      "Answer": "D",
+      "Options": [
+        "Use a validation rule and an email alert to the manager requesting approval",
+        "Change the entry criteria on the approval process to criteria are met and lock the record on initial submission",
+        "Give the manager the \"API Enabled\" permission to permit approval responses by email",
+        "Submit the record for approval from an automated process"
+      ]
+    },
+    {
+      "question": "What are the limitations of Schema Builder when creating a custom object?",
+      "Answer": "A",
+      "Options": [
+        "Fields and relationships can be created, but they will be unable to add the fields to the page layout from the canvas.",
+        "Custom fields can be added to any custom objects, excluding formula field types.",
+        "Relationships can be made to any custom objects, but any relationships to standard objects should be built in Lightning Object Manager.",
+        "\" Save \" should be clicked each time a new object, field, or relationship is create"
+      ]
+    },
+    {
+      "question": "Universal Containers is setting up Salesforce for the first time. Management wants the sales and marketing teams to have different navigation menus in the Salesforce Mobile App. What option is available to an app builder to satisfy this requirement?",
+      "Answer": "B",
+      "Options": [
+        "Create sales and marketing profiles and ensure read access to different objects.",
+        "Create mobile navigation menus for both the sales and marketing profiles.",
+        "Create public groups for sales and marketing and create mobile navigation menus for each group.",
+        "Create roles for sales and marketing and assign a custom homepage layout for each role."
+      ]
+    },
+    {
+      "question": "Ursa Major Solar wants to provide sales console users with an incredible experience, with the most-used components easily accessible at all times. What solution can enable reps to see and access these components from anywhere within the app without leaving the page where the team is working?",
+      "Answer": "C",
+      "Options": [
+        "Home page",
+        "Favorites",
+        "Utility bar",
+        "Global actions"
+      ]
+    },
+    {
+      "question": "An app builder at Northern Trail Outfitters created a sandbox template for Accounts, Projects, and Project Milestones to reconfigure some flows for the project management app. Which type of testing environment should the app builder create?",
+      "Answer": "A",
+      "Options": [
+        "Partial Copy",
+        "Developer",
+        "Developer Pro",
+        "Scratch Org"
+      ]
+    },
+    {
+      "question": "A new field has been added to the Applicant object. A recruiter ran the \"Position with or without Applicants\" report and noticed that the new field was missing as an option to add as a column. How should an app builder troubleshoot this issue?",
+      "Answer": "C",
+      "Options": [
+        "Check \"Allow Reports\" for the position and applicant objects",
+        "Adjust the field level security to include in the report type",
+        "Add the field to the custom report type field layout",
+        "Update the profile with the \"Manage Public Reports\" permission"
+      ]
+    },
+    {
+      "question": "Universal Containers (UC) has large data volumes and is nearing data storage limits. The planned solution is to archive historical data to reduce data storage in Salesforce; however, UC would still like to use reports, queries, and lookups on the archived information. Which two options could meet this requirement? (Choose two.)",
+      "Answer": "BD",
+      "Options": [
+        "Custom objects",
+        "External objects",
+        "Big objects",
+        "Related objects"
+      ]
+    },
+    {
+      "question": "DreamHouse Realty (DR) employees started using company-owned airplanes for work travel after Ursa Major Solar was acquired. DR executives want to automate the submission travel request forms to enforce the Internal policy. How should an app builder automate travel requests based on these criteria?",
+      "Answer": "C",
+      "Options": [
+        "Process Builder",
+        "Workflow rule",
+        "Approval process",
+        "Apex"
+      ]
+    },
+    {
+      "question": "The Director of customer service wants to receive a notification when a case stays in the '' new'' status for more than four business hours. Which two automation processes should be used to accomplish this? Choose 2 answers",
+      "Answer": "AC",
+      "Options": [
+        "Flow Builder",
+        "Process Builder",
+        "Escalation rules",
+        "Scheduled Apex"
+      ]
+    },
+    {
+      "question": "The app builder at Ursa Major Solar has just created a master-detail relationship between a parent object Galaxy__c and child object Star__c. What would be the effect of creating this type of relationship if users want to report on Galaxy__c with Star__c?",
+      "Answer": "C",
+      "Options": [
+        "A new custom report type will need to be created for Galaxy__c with Star__c.",
+        "A Star__c report type with Galaxy__c as a field will be automatically created.",
+        "A Galaxy__c with Star__c report type will be automatically created.",
+        "A new custom report type will need to be created for Star__c with lookup fields from Galaxy__c."
+      ]
+    },
+    {
+      "question": "After utilizing the Lightning Object Creator to create a new object, its fields, and to insert all of the data, an app builder now needs to set up the Lightning Record Page. Which component should the app builder have on their Lightning Record Page to see all of the fields from the page layout?",
+      "Answer": "C",
+      "Options": [
+        "Highlights Panel",
+        "Recommendations",
+        "Record Detail",
+        "Path"
+      ]
+    },
+    {
+      "question": "Cloud Kicks (CK) switched to Lightning Experience and started using Chatter across its global workforce to support its fast-paced sales cycle. CK loves Chatter but struggle with gathering feedback from core team members, including understanding who is available to respond. Which two ways could CK use Chatter to solve this problem? (Choose two.)",
+      "Answer": "AC",
+      "Options": [
+        "Out of Office",
+        "Topics",
+        "Polls",
+        "Streams"
+      ]
+    },
+    {
+      "question": "A new field is being created on a custom object .however the app builder does not want the field to up on pre existing customer report types. what should the app builder do on the custom field setup to fullfill this requirment?",
+      "Answer": "C",
+      "Options": [
+        "Remove new field from all page layouts.",
+        "Remove visibility to all report profiles.",
+        "Deselect auto add to custom report type",
+        "Grant read only access to all report profiles."
+      ]
     }
   ],
   "Admin": [
