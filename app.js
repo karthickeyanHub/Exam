@@ -261,7 +261,7 @@ function onOptionChange(i, isCheckbox) {
 }
 
 function go(dir) {
-  if (!submitted) {
+  if (!submitted && dir > 0) {
     const q = questions[current];
     const required = q.required;
     if (!revealed[current] && answers[current].size !== required) {
