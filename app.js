@@ -186,6 +186,9 @@ function renderQuestion() {
   const inReview = submitted || revealed[current];
 
   $('questionText').textContent = num + '. ' + q.question;
+  $('requiredBadge').textContent =
+    'Select ' + q.required + ' answer' + (q.required > 1 ? 's' : '');
+  $('requiredBadge').classList.remove('hidden');
   $('progressText').textContent = 'Question ' + num + ' of ' + questions.length;
   $('progressFill').style.width = Math.round((num / questions.length) * 100) + '%';
 
@@ -254,6 +257,26 @@ function renderQuestion() {
   $('scoreBackBtn').classList.toggle('hidden', !submitted);
   $('reviewBanner').classList.toggle('hidden', !submitted);
   setFeedback('', '');
+  updateStats();
+}
+
+function updateStats() {
+  if (!$('statCorrect')) return;
+  let correct = 0;
+  let wrong = 0;
+  let toGo = 0;
+  questions.forEach(function (q, i) {
+    const answered = answers[i].size === q.required;
+    if (!answered) {
+      toGo++;
+      return;
+    }
+    if (setsEqual(answers[i], q.correctTexts)) correct++;
+    else wrong++;
+  });
+  $('statCorrect').textContent = correct;
+  $('statWrong').textContent = wrong;
+  $('statToGo').textContent = toGo;
 }
 
 function onOptionChange(i, isCheckbox) {
