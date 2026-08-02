@@ -177,16 +177,90 @@ Question	ANswer	Question	Answer
 176	c		
 177	A		
 178	c		
-179	B,D		
+179	b,c		
 180	c		
 181	A,c		
 182	c		
 183	c		
 184	A,C		
 185	C		
+186	C,D,E		
+187	D		
+188	C		
+189	c		
+190	d		
+191	C		
+192	d		
+193	A,D		
+194	B		
+195	doubt you search it		
+196	D		
+197	A, D,E		
+198	D		
+199	B		
+200	B,C		
+201	D		
+202	A,D,E		
+203	a	doubt 	
+204	a		
+205	D		
+206	B		
+207	B.D 		
+208	A,d		
+209	D		
+210	D		
+211	a		
+212	A		
+213	D		
+214	c		
+215	d		
+216	A,B		
+217	d		
+218	d		
+219	b		
+220	b		
+221			
+222	A		
+223	AC		
+224	C		
+225	BD		
+226	CD		
+227	BD		
+228	D		
+229	C		
+230	DA		
+231	BCD		
+232	A		
+233	C		
+234	A		
+235	B		
+236	C		
+237	A		
+238	A		
+239	A		
+240	AD		
+241	B		
+242	BC		
+243	D		
+244	C		
+245	AB		
+246	ACE		
+247	B		
+248	BC		
+249	B		
+250	D		
+251			
+252	CD		
+253	B		
+254	D		
+255	D		
+256	B		
+
+=======---------==========----------=
+
+questio withoptions. 
 
 
-Question. 
 
 
 App Builder
@@ -907,9 +981,10 @@ D. Lookup field
 104. The app builder at Northern Trail Outfitters created a report type for opportunities with or without shipments. The operations team wants to see the account rating Information on the report.
  What should the app builder do to fulfill this request?
 A. Change the primary object of the custom type to the Account object.
-B. Add the Account Rating field to the opportunity record page.
+B. Add the Account Rating field to the opportunity record page.D. Change the account/opportunity relationship to a master/detail relationship.
 C. Use add fields related via lookup with the view set to opportunities.
-D. Change the account/opportunity relationship to a master/detail relationship.
+
+
 105. Universal Container wants customers to be able to open cases from a public-facing website.
  What should the app builder use to enable visitors to the website?
 A. Web-to-case
@@ -955,7 +1030,6 @@ B. Full copy sandboxes
 C. Partial copy sandboxes
 D. Sandbox Cloning
 109. An app builder wants to limit the amount of fields users see when creating a new Opportunity. Once they fill out the required fields and save, the full record page with additional fields relevant to the Opportunity type becomes available.
-
  How could this be accomplished?
 A. Once the required fields are populated, use a sharing rule to share the new fields with the user.
 B. Use different page layouts for Opportunity types based on the user profile.
@@ -990,14 +1064,16 @@ AQuick Action
  BApproval Process
  CFlow Launcher
  DApex
+
+
+
 115. Which two places can an app builder go to see a list of available Custom Lightning components in their org?
  Choose 2 answers
 A. Lightning App Builder
 B. Lightning component Generator
 C. Lightning components in Setup
 D. Visualforce components in Setup
- 
-116. Nickname__c is a custom text field on a contact record that is utilized to override the contact's name appearing on an email template. This field is not required and is not always filled in.
+ 116. Nickname__c is a custom text field on a contact record that is utilized to override the contact's name appearing on an email template. This field is not required and is not always filled in.
  Which formula should an app builder use to select the contact's preferred name for email communications?
 A. IF(NOT(ISBLANK(Nickname__c)), Nickname_c,FirstName)
 B. IF(TEXT(Nfckname__c), Nickname_c,FirstName)
@@ -1033,28 +1109,22 @@ A. AND(ISPICKVAL(Sales_Organization__c,‘Canada’),ISBLANK(TEXT(Pricing_Tier__
 B. ISPICKVAL(Sales_Organization__c,‘Canada’) && ISNULL(Pricing_Tier__c)
 C. IF(ISNULL(Sales_Organization__c=‘Canada’,ISBLANK(TEXT(Pricing_Tier__c)),TRUE)
 D. OR(ISPICKVAL(Sales_Organization__c,‘Canada’),ISBLANK(TEXT(Pricing_Tier__c)))
-122. The DreamHouse Realty (DR) service manager has asked for some improvements in case management to enforce process compliance so that cases are unable to be reverted to an earlier case status, and to ensure that certain fields are required when specific case criteria are met.
- What solution should an app builder implement to meet these requirements?
+122. The DreamHouse Realty (DR) service manager has asked for some improvements in case management to enforce process compliance so that cases are unable to be reverted to an earlier case status, and to ensure that certain fields are required when specific case criteria are met.  What solution should an app builder implement to meet these requirements?
 A. Process Builder
 B. Workflow Rules
 C. Activities Component
 D. A Validation Rules
-123. Cloud Kicks (CK) wants to simultaneously delete a Suppliere record and all Supplierltem__c records if a
-partnership ends with a supplier.
-What solution could an app builder use to meet the requirement?
-Options
+123. Cloud Kicks (CK) wants to simultaneously delete a Suppliere record and all Supplierltem__c records if a partnership ends with a supplier. What solution could an app builder use to meet the requirement?
 AMany-to-many
 BIndirect lookup
 CHierarchical
 DMaster-detail
-124. A recently refreshed partial sandbox at Cloud Kicks has no data in the custom object Shipping. Checking in production, there are two million rows of data in the object.
-
- What could be the reason the data is missing?
+124. A recently refreshed partial sandbox at Cloud Kicks has no data in the custom object Shipping. Checking in production, there are two million rows of data in the object. What could be the reason the data is missing?
 A. The selected objects in the sandbox template.
 B. The partial sandbox is at capacity.
 C. The sandbox is still populating data.
 D. The sandbox was refreshed too early.
-301. Universal container sales reps can modify fields on an opportunity until it isclosed. Only the sales operations team can modify the post close follow up date andpost close followup comments fields. How to make this happen?
+301. Universal container sales reps can modify fields on an opportunity until it isclosed. Only the sales operations team can modify the post close follow up date and post close followup comments fields. How to make this happen?
 A. Use field-level security to mark fields as read-only on the sales profile
 B. Use field-level security on page layouts to restrict editing fields
 C. Use multiple record types, page layouts, and profiles
@@ -1065,8 +1135,7 @@ A. Patch
 B. Minor
 C. Major
 D. Rollback
-126. Northern Trail Outfitters wants to initiate a daily backup of its Salesforce org.
- Which tool should an app builder recommend for this task?
+126. Northern Trail Outfitters wants to initiate a daily backup of its Salesforce org. Which tool should an app builder recommend for this task?
 A. Report export
 B. Refresh full copy sandbox
 C. AppExchange package
@@ -1077,22 +1146,21 @@ A. Refresh the text sandbox and re_display the change set.
 B. Clone the change set and re_display
 C. Rename the change set, add the changes and re_display
 D. Update the change set and re_display
-128. An app builder just added a lookup field to Account from the existing custom object, Box.
- Which report type is automatically created?
+128. An app builder just added a lookup field to Account from the existing custom object, Box. Which report type is automatically created?
 A. Boxes with or without Accounts
 B. Accounts with or without Boxes
 C. Boxes with Accounts
 D. Accounts with Boxes
 E. Accounts with Boxes. Salesforce automatically creates a new report type that reflects the relationship from the perspective of the parent object, in this case, Accounts, showing related Box records.
-129. The app builder at Cloud Kicks has created a custom object named Delivery__c to track the details of products shipped to customers.
- Which two actions should the app builder take to prevent users in the shipping department from deleting delivery records?
- Choose 2 answers
-A. Use a permission set to remove the Delete permission.B. Remove the Delete permission from the Shipper profile.C. Change the organization-wide default of deliveries to Private.D. Remove the delete button from the Delivery page layout.
-130. DreamHouse Realty wants to import its property records from an external system into Salesforce. The app builder will use an external ID field to house the property ID from the external system.
-Which two field types are allowed as an external ID?
+129. The app builder at Cloud Kicks has created a custom object named Delivery__c to track the details of products shipped to customers.  Which two actions should the app builder take to prevent users in the shipping department from deleting delivery records?    Choose 2 answers
+A. Use a permission set to remove the Delete permission.
+B. Remove the Delete permission from the Shipper profile.
+C. Change the organization-wide default of deliveries to Private.
+D. Remove the delete button from the Delivery page layout.
+130. DreamHouse Realty wants to import its property records from an external system into Salesforce. The app builder will use an external ID field to house the property ID from the external system.   Which two field types are allowed as an external ID?
 ANumber field
  BURL field
- CTest field
+ CText field
  DPhone field
 131. DreamHouse Realty is building a custom Lightning app to track its expanding solar water collection business.
  The Lightning app currently contains a custom Lightning record page with standard components.
@@ -1588,9 +1656,536 @@ B. Remove visibility to all report profiles.
 C. Deselect auto add to custom report type
  D. Grant read only access to all report profiles.
 —--------------
+186.
+Cloud Kicks has a sales rep who is stating that their Contact is unavailable for other users to see within Salesforce.
+In which three ways can an app builder troubleshoot this issue?
+Choose 3 answers
+A. Create a new Contact and have the users try again.
+B. Create an Account Sharing Rule to give the users access to all records.
+C. Confirm whether Default Organization-Wide Sharing Settings provide access to the Account.
+D. Verify the users with the issue have access to the Contact object.
+E. Review the Contact record and ensure it is linked to an Account.
+
+
+—---------------------------
+187.Ursa Major Solar's service department gets requests for several types of services, such as installation, repair, and maintenance. Service managers need to be able to tell when maintenance was last done on an asset to help determine if they are meeting contract agreements, but the last maintenance date can be difficult to determine when there are many work orders related to the asset. They think it would be helpful to have a field auto-populated on the Asset record when a maintenance work order gets closed.
+Which tool should an app builder recommend to help meet this requirement?
+A. Einstein Next Best Action
+B. Roll-up Summary
+C. Apex Trigger
+D. Flow
+—-------------------------------
+188.At Ursa Major Solar, there is a single Lightning record page for the Celestial Bodies custom object; however, there is a Lightning component the app builder wants to restrict to mobile app users.
+
+Which feature in the Lightning app builder should be utilized?
+A. Highlights panel
+B. Chatter feed
+C. Component visibly filter
+D. Related list quick links
+—--------------------------------
+189.loud Kicks wants to know the total value of all won Opportunities for Accounts and display it on the record.
+
+What type of summary should the app builder use in the roll-up summary field?
+A. Max
+B. Count
+C. Min
+D. Sum
+—------------------------
+190.An app builder installs an unmanaged package in a full copy sandbox that is an exact match for production, and now they are ready to install it in production. When the app builder attempts to install the package in production, it fails.
+
+Why did the package fail to install?
+A. Package features not compatible
+B. Incorrect license types
+C. Object limits exceeded
+D. Apex unit test failures
+—--------------------
+191.DreamHouse Realty wants to make sure an Opportunity has a field Expected_Close_Date＿c populated before it is allowed to enter the qualified stage.
+
+How should an app builder solution this request?
+A. Record Type
+B. Activity History
+C. Validation Rule
+D. Page Layout
+—----------------------------------------------
+192.An app builder wants to create a formula field on an Account to include data from related Contacts but is unable to find the relationship in the formula editor.
+
+What is a limitation of formulas that could be causing the issue?
+A. More than 5,000 characters in the formula.
+B. Contact and Account objects DO NOT have a Master-Detail Relationship.
+C. Formula field limit reached on the Account object.
+D. Unable to reference the child records.
+—--------------------------
+193.An app builder is loading data into Salesforce. To link new records back to the legacy system, a field will be used to track the legacy ID on the Account object. For future data loads this ID will be used when upserting records.
+Which two fields attributes should be selected? (Choose two.)
+A. External ID
+B. Text (encrypted)
+C. Required
+D. Unique
+—-----------------------------
+194.An app builder at Universal Containers has been asked to add the Chatter feed to a custom object record page.
+
+Which approach should the app builder use?
+A. Add the standard related list component
+B. Add the standard Chatter feed component
+C. Add the Chatter feed component from the AppExchange
+D. Add a custom Chatter feed component
+—--------------
+195.
 
 
 
 
 
+
+
+
+
+
+
+
+—--------------------------
+196.Universal Containers wants to understand return on investment for the latest advertising buy. They currently use a private security model for all objects.
+What should an app builder recommend?
+A. Utilize Account Hierarchies and Roil-Up Summary fields
+B. Run an opportunities pipeline report
+C. Change to a public security model
+D. Configure Campaign Hierarchies and Campaign statistics
+—---------------------------------
+197.Cloud Kicks has a custom object with a private sharing setting. The business wants to share individual records with specific people or departments on a case-by-case basis.
+
+Which three options does the business user have to manually share individual records? (Choose three.)
+A. Users
+B. Private Groups
+C. Permission Set Groups
+D. Public Groups
+E. Roles and Subordinates
+
+
+—-----------------------------------------------
+198.Universal Containers (UC) has several large customers that sell their products through dealers. UC identifies and works with a single individual at each customer and at each dealer. Separate bills are sent to each customer and each dealer. These details need to be stored in a format that clearly displays the business entities and their appropriate representatives.
+How should an app builder Implement these regalements?
+A. Create a single parent record, add each rep as a contact to the parent account and add each dealer as a child record.
+B. Create both customer and dealer as accounts, create account teams on each account and associate the dealer records with the parent account.
+C. Create a single account record, add each rep as a contact and create a custom dealer object.
+D. Create both customer and dealer as accounts, add each rep as a contact on the corresponding account and create an account hierarchy.
+—--------------------------
+199.Ursa Major Solar wants to create a relationship between the standard Contact object and a custom Solar Project object. Contact s can potentially be related to multiple Solar Project objects, and a Solar Project can have multiple Contacts associated with it.
+
+How should an app builder configure the data model?
+A. One Master-detail relationship on Contact and one Master-detail relationship on Solar Project
+B. Two Master-detail relationships on a new custom object
+C. One Lookup relationship on Contact and one Lookup relationship on Solar Project
+D. Two Lookup relationships on a new custom object
+—-------------------------------------
+200.Ursa Major Solar (UMS) uses a public sharing model for accounts. UMS would like to move to a more restrictive sharing model but wants the Sales team to continue to have access to all account records with the sales record type.
+Which two actions should an app builder complete to implement this change?
+Choose 2 answers
+A
+Update the Sales profile.
+B
+Update the organization-wide defaults
+C
+Create a criteria-based sharing rule.
+D
+Create an owner-based sharing rule.
+—--------------------------
+201.Universal Containers wants users to have access to the pricing guidelines document when viewing a Contract related to an Account.
+What feature should an app builder use to create easy access to the document?
+A. Quick Action on the Contracts object
+B. Quick Action on the Account object
+C. A custom detail page link on the Account object
+D. A custom detail page link on the Contract object
+—--------------------------
+202.Cloud Kicks has a custom object with a private sharing setting. The business wants to share individual records with specific people or departments on a case-by-case basis.
+
+Which three options does the business user have to manually share individual records? (Choose three.)
+A. Users
+B. Private Groups
+C. Permission Set Groups
+D. Public Groups
+E. Roles and Subordinates
+—----------------------
+203.Ursa Major Solar wants to create a relationship between the standard Contact object and a custom Solar Project object Contacts potentially be related to multiple Solar Project objects, and a Solar Project can have multiple Contacts associated with it.
+How should an app builder configure the data model?
+A.
+One Master-detail relationship on Conduct and one Master-detail relationship on Solar Project
+B.
+Two Lookup relationships on a new custom object
+C.
+One Lookup relationship on Contact and one Lookup relationship on Solar Project
+D.
+Two Master-detail relationships on a new custom object
+—------------------------------------------
+204.An app builder wants to create a new field using Schema Builder.
+
+Who will get access to the new field by default?
+A. Internal profiles
+B. All profiles
+C. Standard profiles
+D. No profiles
+—---------------------
+205.An app builder installs an unmanaged package in a full copy sandbox that is an exact match for production, and now they are ready to install it in production. When the app builder attempts to install the package in production, it fails.
+
+Why did the package fail to install?
+A. Package features not compatible
+B. Incorrect license types
+C. Object limits exceeded
+D. Apex unit test failures
+
+—---------------------------------------------
+206.An app builder at Universal Containers has been asked to add the Chatter feed to a custom object record page.
+
+Which approach should the app builder use?
+A. Add the standard related list component
+B. Add the standard Chatter feed component
+C. Add the Chatter feed component from the AppExchange
+D. Add a custom Chatter feed component
+—-------------------------------
+207.Universal Containers has created two custom objects called Seminars and Attendees. Organization-wide defaults for those objects have been set to private. Universal Containers wants to set up a new junction object between these objects. A select group of users should be able to edit records in the junction object.
+
+Which two steps should an app builder take to configure the proper security?
+A . Create an owner-based sharing rule that gives Read access to the junction object.
+B . Set Sharing Settings to Read Only on both master-detail relationship fields.
+C . Set lookup filters on both junction object relationship fields.
+D . Create owner-based sharing rules that give Read access to the master objects. —------------------
+208.An app builder is loading data into Salesforce. To link new records back to the legacy system, a field will be used to track the legacy ID on the Account object. For future data loads this ID will be used when upserting records.
+Which two fields attributes should be selected? (Choose two.)
+A. External ID
+B. Text (encrypted)
+C. Required
+D. Unique
+—-----------------------------------
+209.An app builder wants to create a formula field on an Account to include data from related Contacts but is unable to find the relationship in the formula editor.
+What is a limitation of formulas that could be causing the issue?
+A. More than 5,000 characters in the formula.
+B. Contact and Account objects DO NOT have a Master-Detail Relationship.
+C. Formula field limit reached on the Account object.
+D. Unable to reference the child records.
+—-----------------------------------------------------
+210.Universal Containers (UC) has several large customers that sell their products through dealers. UC identifies and works with a single individual at each customer and at each dealer. Separate bills are sent to each customer and each dealer. These details need to be stored in a format that clearly displays the business entities and their appropriate representatives.
+How should an app builder Implement these regalements?
+A. Create a single parent record, add each rep as a contact to the parent account and add each dealer as a child record.
+B. Create both customer and dealer as accounts, create account teams on each account and associate the dealer records with the parent account.
+C. Create a single account record, add each rep as a contact and create a custom dealer object.
+D. Create both customer and dealer as accounts, add each rep as a contact on the corresponding account and create an account hierarchy.
+—-----------------------------------
+211.DreamHouse Realty wants to make sure an Opportunity has a field Expected_Close_Date_c populated before it is allowed to enter the qualified stage.
+How should an app builder solution this request?
+A. Validation Rule
+B. Activity History
+C. Record Type
+D. Page Layout
+—-----------------------------------------------
+212.ales managers at Cloud Kicks would like to standardize what information sales reps are gathering. Sales reps want recommendations, sales strategies and to know what key fields need to be completed at each step of the sales process on the opportunity record. Which feature should an app builder use to provide this functionality?
+A.
+Path
+B.
+Other Red
+C.
+Approval Process
+D.
+Global Action
+—------------------------------------
+213.The Service Manager provided the app builder with color code requirements for case age on open cases.
+New cases populate a green circle
+Day-old cases populate a yellow circle
+Three day-old cases populate a red circle
+How should an app builder implement this requirement?
+A. Lightning Web Component
+B. Quick Action
+C. Custom Button
+D. Formula Field
+—------------------------------
+214.Ursa Major Solar wants to see the Type field from the parent object Galaxy listed on the child recordStar. The app builder is receiving an error stating "Picklist values are only supported in certain functions".
+What formula should an app builder use to achieve the desired result?
+A. ISPICKVAL(Galaxy__r.Type__c)
+B. VALUE(Galaxy_r.Type__c)
+C. TEXT(Galaxy_r.Type_c)
+D. FIND(Galaxy__r.Type__c)
+—------------------------------------------------
+215.Universal Containers require different fields to be filled out at each stage of the Opportunity sales process.
+What configuration steps can an app builder use to meet this requirement?
+A. Define record types and page layouts for each stage
+B. Set page layout required fields based on the current stage
+C. Create a Process Builder to prompt the User for field information
+D. Add the Path component to the Lightning record page
+
+—-----------------------------------
+216.An app builder has created a custom Lightning App and wants to make it available to the internal users at Universal Containers.
+Which two steps are necessary to accomplish this task? (Choose two.)
+A. Build a Custom Tab for the app
+B. Create a subdomain using My Domain
+C. Upload the app to Static Resources
+D. Create a Visualforce page
+—---------------------------------
+217.Universal Containers uses a custom picklist called Account_Region__c on the Account object. The vice president of
+sales has asked that the value of this field is visible on Opportunities.
+How should an app builder create this solution?
+A.
+Lookup field
+B.
+Field-level security
+C.
+Field history tacking
+D.
+Cross-object formula field
+—----------------------------
+218.Cloud Kicks (CK) has a formula field `specialty ` or Opportunity that gets its value from the `specialty ` field on the related Account. CK has changed its processes to allow opportunities to have different values for `Specialty ` than their Account. How can sales reps enter values for the `specialty ` field on Opportunity, while preserving the values on existing opportunities?
+A
+Extent the data, convert the field to `GETTING` and mount the data.
+B
+Convert the field to a text field and the values in the left.
+C
+Create a new text field and keep using the existing formula field.
+D
+Create a new text field and import the formula field values in it.
+
+—-----------------------------
+219.Cloud Kicks has five years of sales data and would like to track when customers made their first purchase.
+
+How should an app builder use a roll-up summary to meet the requirements?
+A. Create a new date field called First Order Date, create a new Workflow to set the date, and roll up the value with a filter where IsWon = TRUE.
+B. Create a new roll-up summary field called First Order Date, using Type MIN on the Opportunity Close Date with a filter where IsWon = TRUE.
+C. Create a new roll-up summary field called First Order Date, using Type SUM on Opportunity Close Date.
+D. Create a new date field called First Order Date, then create a roll-up summary to update the field using Type MIN.
+
+—----------------------------------
+220.Cloud Kicks (CK) captures all shipping information in a custom object called Shipments__c. CK's app builder is tasked with creating an approval process to ensure department members can approve all overnight shipments.
+
+Where should the app builder route the approval request?
+A. Public group
+B. Queue
+C. Hierarchy field
+D. Role
+—------------------------------------------------
+221.  Duplicate
+222. An app builder needs to create new automation on an object.
+ What best practice should the app builder follow when building out automation7
+A. One Flow per object.
+B. One record change process per object.
+C. One invocable process per object.
+D. One Workflow rule per object.
+223. Universal Containers has purchased a Lightning Component on the AppExchange. Where can that component be utilized. Choose 2 answers
+A. Standalone Lightning App
+B. Visual Workflow
+C. Salesforce1 Mobile App
+D. Lightning Process Builder
+224. Universal Containers have changes that need to be deployed from Sandbox to Production. Where should an app builder look to verify that a Change Set can be deployed?
+Options:
+A. Deployment Settings
+B. Inbound Change Sets
+C. Deployment Status
+D. Inbound Change Sets
+225. Sales representatives want to capture custom Feedback record details related to each Account. The sales reps want to accomplish this with minimal clicks on the Salesforce1 mobile application. What is the recommended solution to meet this requirement? Choose 2 answers.
+A. Create predefined values for most of the fields.
+B. Create a global action on Account.
+C. Create a feedback object as a parent of Account
+D. Create an object-specific action on Account
+226. A manager built out a new Account report and wants to add a chart of the data to account records. An app builder tried to use the Report Chart component but was unable to find the manager’s report.
+
+ What are two reasons the app builder is unable to see the report? (Choose two.)
+A. The app builder did not create the report.
+B. The report does not have a chart.
+C. The report has no data in it.
+D. The report is in the manager’s Private Reports folder
+227. The Cloud Kicks (CK) sales team is currently using a sales app in Lightning Experience. CK is planning a Salesforce mobile app rollout next month to increase productivity for reps while out in the field. After reviewing the mobile app, the sales operations manager asks about ways to create an enhanced user experience. Which two solutions could an app builder suggest? Choose 2 answers
+Options:
+A. Allow mobile users to support Account Upstream Agent Closets.
+B. Include Today as a guide from in line size.
+C. Set up different mobile menu configurations of different types of users.
+D. Create a custom app page and Assign to the mobile menu.
+228. On the Account Lightning record page, users need to see ten fields and the ability to sort and wrap text on their Related Lists.
+ What Related List type would the app builder select for the Related List Lightning component?
+A. Basic List
+B. ListVlew
+C. List Class
+D. Enhanced List
+229. The app builder at AW Computing needs to capture information about sales rep help requests for sales engineering. Some Opportunities are more complex and require many different requests for help. Additionally, the date of the most recent request should be displayed on the Opportunity page.
+What should the app builder use to accomplish this?
+A. Opportunity with Master-detail field to custom object
+ B. Custom object with Lookup field to Opportunity
+ C. Custom object with Master-detail field to Opportunity
+ D. Opportunity with Lookup field to custom object
+230. Which two solutions prevent a formula field from being referenced by a Roll-Up Summary field?
+Choose 2 answers
+A. The NOW() function in the formula field
+ B. A cross-object formula updating a field referenced by the formula field
+ C. The CASE() function in the formula field
+ D. A cross-object field referenced in the formula field
+
+231. An app builder wants to use Process Builder to automate some of the work being done by the sales team.
+ What are three capabilities of Process Builder that can improve productivity?
+ Choose 3 answers
+A. Delete a related record.
+B. Update a related record.
+C. Create a child record.
+D. Send an email alert.
+E. Send an outbound message.
+232. Ursa Major Solar has received complaints about inconsistent customer service
+
+ experiences and wants to provide its agents with a checklist of items that must be accomplished
+
+ when servicing a case.
+
+ What should an app builder use to implement this?
+
+ A. Actions & Recommendations component
+
+ B. Highlights Panel component
+
+ C. Activity Timeline component
+
+ D. Assistant component
+233. A Service Coordinator (SC) for Ursa Major Solar (UMS) does a final review of work orders owned by a technician for a specific region before the records are submitted for an invoice. Before closing out the work order, the SC needs to modify data or remove attachments that were added by mistake. The SC also needs access to any other related records owned by the technician.
+ What solution would provide the required access, given a private data model?
+A. Create a workflow rule that updates records owned by technicians in that region with the SC.
+B. Give the SC a permission set with the Modify All Data system permission.
+C. Put the SC in the role hierarchy above the technicians whose work orders they review.
+D. Change work order access on the SC's profile to 'Modify AIl.
+234. The CFO of Cloud Kicks needs to sign off on any major show retail deal that has a discount of more than 30% before the deal can be closed.
+ What feature would be used to handle this requirement?
+A. Approval Process
+B. Workflow Rule
+C. Email Alert
+D. Field Update
+235. An app builder has created a change set and deployed a report from their development sandbox to a partial sandbox for User Acceptance Testing. When the app builder runs the report, no data is returned.
+
+ What can be a reason for this?
+A. Reports have to be deployed with Salesforce DX.
+B. Data is unable to be deployed with change sets.
+C. Reports have to be manually re-created in each environment.
+D. Data is deployed when added to a change set
+236. An app builder wants to configure a sandbox environment for users to perform user acceptance testing of the latest features from developers. The sandbox should include about 500MB worth of data configured via a template. Also, the sandbox should be refreshed weekly. Which sandbox meets the requirements?
+A. Full sandbox
+B. Developer File sandbox
+C. Partial Copy sandbox
+D. Developer sandbox
+237. Ursa Major Solar wants to convert the relationship between Galaxy and Star from a lookup relationship to a master-detail relationship so each Galaxy record can be equipped with a roll-up summary count of Star records.
+ Which two considerations should be made?
+ Choose 2 answers
+A. The Star records are all required to have an existing value in their Galaxy field.
+B. The Galaxy object has fewer than two existing master-detail relationships.
+C. The Galaxy object is required to contain existing roll-up summary fields.
+D. The Star object has fewer than two existing master-detail relationships.
+238. At AW Computing, the Candidate object has a checkbox field for Previous Experience and
+
+ a number field for Years of Previous Experience. The Recruiting team would like the number field to
+
+ display only if the Previous Experience field is checked.
+
+ Which functionality should the app builder use to meet this requirement?
+
+ A. Use Dynamic Forms to display the Years of Previous Experience field if Previous Experience is checked.
+
+ B. Create a dependency between the Previous Experience and Years of Previous Experience fields.
+
+ C. Create two different page layouts and a process to change the Inyout if Previous Experience is checked.
+
+ D. Use a Visualforce component on the candidate page layout to conditionally display the fields.
+239. A sales manager at Cloud Kicks wants the team to spend more time in the field and less time manually entering the information found on the business cards they collect.
+ What should an app builder do to help achieve this goal without sacrificing data quality?
+A. Research and evaluate data enrichment products on the AppExchange to automate data entry.
+B. Use Flow to create a data entry wizard to automate data entry.
+C. Use a combination of workflow rules and formula fields to populate key fields for the sales user.
+D. Post daily to the Chatter feed any relevant fields that need to be populated.
+240. The Training team at UVC uses a custom Training object to track their customer trainings. An App Builder needs to create a relationship between the Training object and the related Student's record. A private sharing model is in place for both Students and Training. Which two statements are true when creating a Student lookup field on the Training object? Choose 2 answers
+A. On Training record, the Student Lookup field can be made optional
+B. On Student Record, users can set up Roll-up summary fields on Training records
+C. Cross-object field updates between Training and Student records are not supported
+D. On Training record, users can only delete students, if they have access to it
+241. The sales Operations team at AWS Computing deletes accounts for a variety of a reasons. The sales ops director is worried that the Sales team may delete accounts that sales reps are actively selling into.
+Now should the app builder keep accounts with open opportunities from being deleted?
+ACreate an Apex Trigger on the Account object
+ BCreate a validation rule on the Account object.
+ CRemove the delete button on the account layout
+ DRemove the Delete permission from the Sales Rep profile.
+242. Northern Trail Outfitters (NTO) has created the custom objects Trail and Park in Salesforce to track trails and parks respectively. NTO wants to track the total number of trails a park has on the park record without writing any code.
+ Which two actions should an app builder take to accomplish this requirement?
+ Choose 2 answers
+A. Use a formula field on the Park record to show the total number of trails.
+B. Use a roll-up summary field on the Park record to show the total number of Trails.
+C. Use a master-detail relationship between the Park and Trail objects.
+D. Use a lookup relationship between the Park and Trail objects.
+243. Cloud Kicks (CK) wants to set up a custom child object to track gift cards issued to a customer. A key requirement is to track the total number of gift cards opened and gift cards issued on an Account. CK wants to permanently ensure the gift cards are unable to be moved across any other Account once it is created.
+ On the gift card object, what type of field should be created to support this requirement?
+A. Formula
+B. Lookup relationship
+C. Roll-up summary
+D. Master-detail relationship
+244.  An app builder wants to deploy a new version of an auto launched flow production in an active state so that the new functionality is immediately available to users.
+ What should the app builder take into consideration when planning the deployment?
+A. Include the profile that access the flow in the deployment
+B. Include the process builder calling the flow in the deployment
+C. Verify there is an apex test that provides test coverage for the flow
+D. Verify there is a static resource that provides test coverage for the flow
+245. Cloud Kicks has built out a process that is supposed to update record ownership based on several different criteria. Some users are reporting that they are not getting the expected level of access to accounts and contacts.
+
+ Which two considerations should an app builder be aware of that could be causing the issue? (Choose two.)
+A. Processes that update record owners do not transfer child records.
+B. Processes will fail on records owned by inactive users.
+C. Processes will only run if the most current version is active.
+D. Processes use the first value if the Owner field is updated multiple times.
+246. A new custom object is being created with a private sharing setting. The business wants to share individual records with specific people or group of people on a case by case basis. What options does the business user have to manually share individual records? Choose 3 answers
+A. Users
+B. Profiles
+C. Public Groups
+D. Permission Sets
+E. Roles
+247. An app builder wants to create a formula field on an Account to include data from related Contacts but is unable to find the relationship in the formula editor.
+ What is a limitation of formulas that could be causing the issue?
+A. Unable to reference the child records.
+B. Formula field limit reached on the Account object.
+C. A master-detail relationship should be created.
+D. More than 5,000 characters in the formula.
+ 
+ 
+ 
+248. Ursa Major Solar (UMS) uses a public sharing model for accounts. UMS would like to move to a more restrictive sharing model but wants the Sales team to continue to have access to all account records with the sales record type.
+ Which two actions should an app builder complete to implement this change?
+ Choose 2 answers
+A. Update the Sales profile.
+B. Update the organization-wide defaults
+C. Create a criteria-based sharing rule.
+D. Create an owner-based sharing rule.
+249. DreamHouse Realty wants to make sure an Opportunity has a field Expected_Close_Date_c populated before it is allowed to enter the qualified stage.
+ How should an app builder solution this request?
+A. Record Type
+B. Validation Rule
+C. Activity History
+D. Page Layout
+250. An app builder installs an unmanaged package in a full copy sandbox that is an exact match for production, and now they are ready to install it m production. When the app builder attempts to install the package in production, it fails. Why did the package fail to install?
+AIncorrect license types
+ BPackage features not compatible
+ CObject limits exceeded
+ DApex unit test failures
+251. Duplicate
+252.  An App Builder is loading the data into salesforce. To link the new records back to the legacy system, a field will be used to track the legacy ID on the account object. For future data loads this ID will be used when upserting records. Which field attribute should be selected? Choose 2 answers
+A. Required
+B. Text (encrypted)
+C. Unique
+D. External ID
+253. Ursa Major Solar wants to create a relationship between the standard Contact object and a custom Solar Project object Contacts potentially be related to multiple Solar Project objects, and a Solar Project can have multiple Contacts associated with it.
+ How should an app builder configure the data model?
+A. Two Lookup relationships on a new custom object
+B. One Master-detail relationship on Conuct and one Master-detail relationship on Solar Project
+C. One Lookup relationship on Contact and one Lookup relationship on Solar Project
+D. Two Master-detail relationships on a new custom object
+254. Universal Containers wants to understand return on investment for the latest advertising buy. They currently use a private security model for all objects.
+ What should an app builder recommend?
+A. Utilize Account Hierarchies and Roil-Up Summary fields
+B. Run an opportunities pipeline report
+C. Change to a public security model
+D. Configure Campaign Hierarchies and Campaign statistics
+255. Ursa Major Solar has a lookup relationship between a custom Galaxy _c object and a custom Star_c object. An app builder wants to create a roll-up summary field that counts the total number of Star_c records related to each Galaxy__c record.
+ How would the current configuration impact the ability to achieve the desired result?
+A. A roll-up summary field will need to be created on the Galaxy__c object with a field filter that select all related Star_c records
+B. The roll-up summary can be achieved by creating a formula field on the Star__c object.
+C. The roll-up summary can be achieved by creating a formula field on the Galaxy__c object.
+D. The lookup relationship will need to be converted to a master-detail relationship before a roll-up summary field can be created.
+256. Ursa Major Solar is ramping up the sales team to meet increased demand. As part of the short ramp up for these new reps, the manager wants to provide a help guide to enable reps to easily get help where needed during the different sales processes.
+ Which solution should an app builder recommend?
+A. Journey Builder
+B. Path
+C. Flow
+D. Chatter Publisher
 
