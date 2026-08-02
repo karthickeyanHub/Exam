@@ -12,6 +12,9 @@ let startTime = 0;
 let elapsedSeconds = 0;
 let timerInterval = null;
 let examRange = null;
+let retakeActive = false;
+let retakeRounds = [];
+let originalResult = null;
 
 function shuffle(arr) {
   for (let i = arr.length - 1; i > 0; i--) {
@@ -143,6 +146,10 @@ function startExam(data) {
   updateTimer();
   timerInterval = setInterval(updateTimer, 1000);
 
+  retakeActive = false;
+  retakeRounds = [];
+  originalResult = null;
+
   $('prevBtn').addEventListener('click', function () {
     go(-1);
   });
@@ -156,7 +163,19 @@ function startExam(data) {
     $('scoreArea').classList.remove('hidden');
   });
 
+  document.addEventListener('keydown', handleKeydown);
+
   renderQuestion();
+}
+
+function handleKeydown(e) {
+  if (e.key === 'n' || e.key === 'N' || e.key === 'ArrowRight') {
+    e.preventDefault();
+    go(1);
+  } else if (e.key === 'p' || e.key === 'P' || e.key === 'ArrowLeft') {
+    e.preventDefault();
+    go(-1);
+  }
 }
 
 function renderQuestion() {
@@ -225,11 +244,13 @@ function renderQuestion() {
   }
 
   $('prevBtn').disabled = current === 0;
-  $('nextBtn').disabled = current === questions.length - 1;
-  $('nextBtn').textContent = current === questions.length - 1 ? 'Last Question' : 'Next';
+  $('nextBtn').disabled = retakeActive && current === questions.length - 1 ? false : current === questions.length - 1;
+  $('nextBtn').textContent =
+    retakeActive && current === questions.length - 1 ? 'Finish' : current === questions.length - 1 ? 'Last Question' : 'Next';
   $('revealBtn').classList.toggle('hidden', submitted);
   $('revealBtn').disabled = revealed[current];
   $('revealBtn').textContent = revealed[current] ? 'Answer Revealed' : 'Reveal Answer';
+  $('submitBtn').classList.toggle('hidden', retakeActive);
   $('scoreBackBtn').classList.toggle('hidden', !submitted);
   $('reviewBanner').classList.toggle('hidden', !submitted);
   setFeedback('', '');
@@ -261,6 +282,12 @@ function onOptionChange(i, isCheckbox) {
 }
 
 function go(dir) {
+  const target = current + dir;
+  if (target < 0) return;
+  if (target >= questions.length) {
+    if (retakeActive && dir > 0) finishRetake();
+    return;
+  }
   if (!submitted && dir > 0) {
     const q = questions[current];
     const required = q.required;
@@ -276,7 +303,7 @@ function go(dir) {
       return;
     }
   }
-  current += dir;
+  current = target;
   renderQuestion();
 }
 
@@ -320,6 +347,8 @@ function submitExam() {
   const wrongList = results.filter(function (r) {
     return !r.right;
   });
+
+  originalResult = { correct: rightCount, wrong: wrongList.length, total: questions.length };
 
   $('questionArea').classList.add('hidden');
   $('scoreArea').classList.remove('hidden');
@@ -372,6 +401,9 @@ function renderScore(rightCount, wrongList) {
         '</div>' +
         '</div>'
       : '<div class="perfect">Perfect! All answers are correct.</div>') +
+    (wrongList.length
+      ? '<button id="retakeBtn" class="btn btn-primary" type="button">Answer Wrong Questions</button> '
+      : '') +
     '<button id="backHomeBtn" class="btn btn-primary" type="button">Back to Exams</button>' +
     '</div>';
 
@@ -380,6 +412,8 @@ function renderScore(rightCount, wrongList) {
       reviewQuestion(Number(btn.getAttribute('data-q')));
     });
   });
+  const retakeBtn = $('retakeBtn');
+  if (retakeBtn) retakeBtn.addEventListener('click', startRetake);
   $('backHomeBtn').addEventListener('click', function () {
     location.href = 'index.html';
   });
@@ -394,6 +428,129 @@ function reviewQuestion(idx) {
     'You answered this one incorrectly. The correct answer(s) are highlighted in green.',
     'error'
   );
+}
+
+function startRetake() {
+  const wrongList = questions
+    .map(function (qq, i) {
+      return { index: i, right: setsEqual(answers[i], qq.correctTexts) };
+    })
+    .filter(function (r) {
+      return !r.right;
+    });
+  if (!wrongList.length) return;
+  const subset = wrongList.map(function (r) {
+    return questions[r.index];
+  });
+  beginRetake(subset);
+  setFeedback(
+    'Practice mode: answer the ' + subset.length + ' question(s) you answered wrong.',
+    'success'
+  );
+}
+
+function beginRetake(subset) {
+  retakeActive = true;
+  submitted = false;
+  questions = subset;
+  current = 0;
+  answers = subset.map(function () {
+    return new Set();
+  });
+  revealed = subset.map(function () {
+    return false;
+  });
+  $('scoreArea').classList.add('hidden');
+  $('questionArea').classList.remove('hidden');
+  renderQuestion();
+}
+
+function finishRetake() {
+  const q = questions[current];
+  if (!revealed[current] && answers[current].size !== q.required) {
+    setFeedback(
+      'Please select exactly ' +
+        q.required +
+        ' option' +
+        (q.required > 1 ? 's' : '') +
+        ' before finishing.',
+      'error'
+    );
+    return;
+  }
+
+  const results = questions.map(function (qq, i) {
+    return { index: i, right: setsEqual(answers[i], qq.correctTexts) };
+  });
+  const rightCount = results.filter(function (r) {
+    return r.right;
+  }).length;
+  const wrongList = results.filter(function (r) {
+    return !r.right;
+  });
+  retakeRounds.push({
+    correct: rightCount,
+    wrong: wrongList.length,
+    total: questions.length
+  });
+
+  if (!wrongList.length) {
+    renderRetakeComplete();
+  } else {
+    const subset = wrongList.map(function (r) {
+      return questions[r.index];
+    });
+    beginRetake(subset);
+    setFeedback(
+      'You still got ' + subset.length + ' question(s) wrong. Practice them again.',
+      'error'
+    );
+  }
+}
+
+function renderRetakeComplete() {
+  const roundsHtml = retakeRounds
+    .map(function (r, i) {
+      return (
+        '<div class="stat retake-stat"><span>' +
+        r.correct +
+        '/' +
+        r.total +
+        '</span><label>Retake ' +
+        (i + 1) +
+        '</label></div>'
+      );
+    })
+    .join('');
+
+  $('questionArea').classList.add('hidden');
+  $('scoreArea').classList.remove('hidden');
+  $('scoreArea').innerHTML =
+    '<div class="score-card">' +
+    '<h2>All Questions Mastered</h2>' +
+    '<p class="score-exam">' +
+    esc(examName) +
+    '</p>' +
+    '<div class="score-grid">' +
+    '<div class="stat correct-stat"><span>' +
+    originalResult.correct +
+    '/' +
+    originalResult.total +
+    '</span><label>Original Exam</label></div>' +
+    roundsHtml +
+    '<div class="stat total-stat"><span>' +
+    originalResult.total +
+    '/' +
+    originalResult.total +
+    '</span><label>Final Score</label></div>' +
+    '</div>' +
+    '<div class="score-percent">100% \u2013 Every question answered correctly!</div>' +
+    '<button id="backHomeBtn" class="btn btn-primary" type="button">Back to Exams</button>' +
+    '</div>';
+
+  $('backHomeBtn').addEventListener('click', function () {
+    location.href = 'index.html';
+  });
 }
 
 document.addEventListener('DOMContentLoaded', init);

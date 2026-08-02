@@ -441,6 +441,10 @@ body {
   line-height: 2.4rem;
 }
 
+.retake-stat span {
+  color: var(--info);
+}
+
 .score-percent {
   font-size: 1.2rem;
   font-weight: 700;
