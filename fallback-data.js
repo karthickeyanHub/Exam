@@ -2223,7 +2223,7 @@ window.FALLBACK_DATA = {
     },
     {
       "question": "Ursa Major Solar wants to convert the relationship between Galaxy and Star from a lookup relationship to a master-detail relationship so each Galaxy record can be equipped with a roll-up summary count of Star records. Which two considerations should be made?",
-      "Answer": "A",
+      "Answer": "AB",
       "Options": [
         "The Star records are all required to have an existing value in their Galaxy field.",
         "The Galaxy object has fewer than two existing master-detail relationships.",
