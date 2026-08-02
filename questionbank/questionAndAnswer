@@ -1921,24 +1921,16 @@ D. Create a Visualforce page
 217.Universal Containers uses a custom picklist called Account_Region__c on the Account object. The vice president of
 sales has asked that the value of this field is visible on Opportunities.
 How should an app builder create this solution?
-A.
-Lookup field
-B.
-Field-level security
-C.
-Field history tacking
-D.
-Cross-object formula field
+A. Lookup field
+B. Field-level security
+C. Field history tacking
+D. Cross-object formula field
 —----------------------------
 218.Cloud Kicks (CK) has a formula field `specialty ` or Opportunity that gets its value from the `specialty ` field on the related Account. CK has changed its processes to allow opportunities to have different values for `Specialty ` than their Account. How can sales reps enter values for the `specialty ` field on Opportunity, while preserving the values on existing opportunities?
-A
-Extent the data, convert the field to `GETTING` and mount the data.
-B
-Convert the field to a text field and the values in the left.
-C
-Create a new text field and keep using the existing formula field.
-D
-Create a new text field and import the formula field values in it.
+A Extent the data, convert the field to `GETTING` and mount the data.
+B Convert the field to a text field and the values in the left.
+C Create a new text field and keep using the existing formula field.
+D Create a new text field and import the formula field values in it.
 
 —-----------------------------
 219.Cloud Kicks has five years of sales data and would like to track when customers made their first purchase.

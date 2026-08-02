@@ -1984,10 +1984,10 @@ window.FALLBACK_DATA = {
       "question": "Sales managers at Cloud Kicks would like to standardize what information sales reps are gathering. Sales reps want recommendations, sales strategies and to know what key fields need to be completed at each step of the sales process on the opportunity record. Which feature should an app builder use to provide this functionality?",
       "Answer": "A",
       "Options": [
-        "",
-        "",
-        "",
-        ""
+        "Path",
+        "Other Red",
+        "Approval Process",
+        "Global Action"
       ]
     },
     {
@@ -2034,10 +2034,10 @@ window.FALLBACK_DATA = {
       "question": "Universal Containers uses a custom picklist called Account_Region__c on the Account object. The vice president of sales has asked that the value of this field is visible on Opportunities. How should an app builder create this solution?",
       "Answer": "D",
       "Options": [
-        "",
-        "",
-        "",
-        ""
+        "Lookup field",
+        "Field-level security",
+        "Field history tacking",
+        "Cross-object formula field"
       ]
     },
     {
