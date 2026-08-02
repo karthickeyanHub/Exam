@@ -1861,7 +1861,7 @@
     },
     {
       "question": "Cloud Kicks wants to know the total value of all won Opportunities for Accounts and display it on the record. What type of summary should the app builder use in the roll-up summary field?",
-      "Answer": "C",
+      "Answer": "D",
       "Options": [
         "Max",
         "Count",
