@@ -18,6 +18,7 @@ let originalResult = null;
 let committed = [];
 let results = [];
 let rangeLabel = '';
+let markedForReview = [];
 
 function shuffle(arr) {
   for (let i = arr.length - 1; i > 0; i--) {
@@ -149,6 +150,9 @@ function startExam(data) {
   results = questions.map(function () {
     return null;
   });
+  markedForReview = questions.map(function () {
+    return false;
+  });
 
   startTime = Date.now();
   updateTimer();
@@ -171,6 +175,7 @@ function startExam(data) {
     go(1);
   });
   $('revealBtn').addEventListener('click', revealAnswer);
+  $('markBtn').addEventListener('click', markForReview);
   $('submitBtn').addEventListener('click', submitExam);
   $('scoreBackBtn').addEventListener('click', function () {
     $('questionArea').classList.add('hidden');
@@ -217,7 +222,10 @@ function updateNavigator() {
   const btns = grid.querySelectorAll('.nav-btn');
   btns.forEach(function (btn, i) {
     const idx = Number(btn.getAttribute('data-q'));
-    btn.classList.remove('correct', 'wrong', 'current');
+    btn.classList.remove('correct', 'wrong', 'marked', 'current');
+    if (markedForReview[idx]) {
+      btn.classList.add('marked');
+    }
     if (committed[idx]) {
       btn.classList.add(results[idx] ? 'correct' : 'wrong');
     }
@@ -325,7 +333,12 @@ function renderQuestion() {
   $('revealBtn').classList.toggle('hidden', submitted);
   $('revealBtn').disabled = revealed[current];
   $('revealBtn').textContent = revealed[current] ? 'Answer Revealed' : 'Reveal Answer';
+  $('markBtn').classList.toggle('hidden', retakeActive);
+  $('markBtn').disabled = locked;
+  $('markBtn').classList.toggle('marked', markedForReview[current]);
+  $('markBtn').textContent = markedForReview[current] ? 'Marked for Review' : 'Mark for Review';
   $('submitBtn').classList.toggle('hidden', retakeActive);
+  $('submitBtn').textContent = submitted ? 'Back to Score' : 'Submit Exam';
   $('scoreBackBtn').classList.toggle('hidden', !submitted);
   $('reviewBanner').classList.toggle('hidden', !submitted);
   setFeedback('', '');
@@ -367,6 +380,7 @@ function onOptionChange(i, isCheckbox) {
     selected.add(q.options[i].text);
   }
 
+  if (answers[current].size === q.required) markedForReview[current] = false;
   renderQuestion();
   if (msg) setFeedback(msg, 'error');
 }
@@ -387,7 +401,7 @@ function go(dir) {
   if (!submitted && dir > 0) {
     const q = questions[current];
     const required = q.required;
-    if (!revealed[current] && answers[current].size !== required) {
+    if (!revealed[current] && answers[current].size !== required && !markedForReview[current]) {
       setFeedback(
         'Please select exactly ' +
           required +
@@ -398,21 +412,45 @@ function go(dir) {
       );
       return;
     }
-    commitCurrent();
+    if (answers[current].size === required) commitCurrent();
   }
   current = target;
   renderQuestion();
 }
 
+function markForReview() {
+  if (submitted || committed[current]) return;
+  markedForReview[current] = !markedForReview[current];
+  renderQuestion();
+}
+
 function revealAnswer() {
   revealed[current] = true;
+  markedForReview[current] = false;
   commitCurrent();
   renderQuestion();
   setFeedback('Correct answer is highlighted in green.', 'success');
 }
 
 function submitExam() {
-  if (submitted) return;
+  if (submitted) {
+    $('questionArea').classList.add('hidden');
+    $('scoreArea').classList.remove('hidden');
+    return;
+  }
+  for (let i = 0; i < questions.length; i++) {
+    if (markedForReview[i] && !revealed[i] && answers[i].size !== questions[i].required) {
+      current = i;
+      renderQuestion();
+      setFeedback(
+        'Question ' +
+          (i + 1) +
+          ' is marked for review and still unanswered. Answer it before submitting.',
+        'error'
+      );
+      return;
+    }
+  }
   const q = questions[current];
   if (!revealed[current] && answers[current].size !== q.required) {
     setFeedback(
@@ -572,6 +610,9 @@ function beginRetake(subset) {
   });
   results = subset.map(function () {
     return null;
+  });
+  markedForReview = subset.map(function () {
+    return false;
   });
   $('scoreArea').classList.add('hidden');
   $('questionArea').classList.remove('hidden');
