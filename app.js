@@ -15,6 +15,9 @@ let examRange = null;
 let retakeActive = false;
 let retakeRounds = [];
 let originalResult = null;
+let committed = [];
+let results = [];
+let rangeLabel = '';
 
 function shuffle(arr) {
   for (let i = arr.length - 1; i > 0; i--) {
@@ -114,6 +117,7 @@ function startExam(data) {
   }
 
   let raw = rawAll.slice();
+  rangeLabel = '';
   if (examRange) {
     const from = Math.min(examRange.from, raw.length);
     const to = Math.min(examRange.to, raw.length);
@@ -122,9 +126,7 @@ function startExam(data) {
       return;
     }
     raw = raw.slice(from - 1, to);
-    const note = $('rangeNote');
-    note.classList.remove('hidden');
-    note.textContent =
+    rangeLabel =
       'Selected questions ' +
       examRange.from +
       '\u2013' +
@@ -141,6 +143,12 @@ function startExam(data) {
   revealed = questions.map(function () {
     return false;
   });
+  committed = questions.map(function () {
+    return false;
+  });
+  results = questions.map(function () {
+    return null;
+  });
 
   startTime = Date.now();
   updateTimer();
@@ -156,6 +164,12 @@ function startExam(data) {
   $('nextBtn').addEventListener('click', function () {
     go(1);
   });
+  $('bottomPrevBtn').addEventListener('click', function () {
+    go(-1);
+  });
+  $('bottomNextBtn').addEventListener('click', function () {
+    go(1);
+  });
   $('revealBtn').addEventListener('click', revealAnswer);
   $('submitBtn').addEventListener('click', submitExam);
   $('scoreBackBtn').addEventListener('click', function () {
@@ -165,7 +179,50 @@ function startExam(data) {
 
   document.addEventListener('keydown', handleKeydown);
 
+  buildNavigator();
+
   renderQuestion();
+}
+
+function buildNavigator() {
+  const grid = $('navGrid');
+  if (!grid) return;
+  grid.innerHTML = questions
+    .map(function (_, i) {
+      return (
+        '<button type="button" class="nav-btn" data-q="' +
+        i +
+        '">' +
+        (i + 1) +
+        '</button>'
+      );
+    })
+    .join('');
+  grid.querySelectorAll('.nav-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      jumpTo(Number(btn.getAttribute('data-q')));
+    });
+  });
+}
+
+function jumpTo(idx) {
+  if (idx < 0 || idx >= questions.length || idx === current) return;
+  current = idx;
+  renderQuestion();
+}
+
+function updateNavigator() {
+  const grid = $('navGrid');
+  if (!grid) return;
+  const btns = grid.querySelectorAll('.nav-btn');
+  btns.forEach(function (btn, i) {
+    const idx = Number(btn.getAttribute('data-q'));
+    btn.classList.remove('correct', 'wrong', 'current');
+    if (committed[idx]) {
+      btn.classList.add(results[idx] ? 'correct' : 'wrong');
+    }
+    if (idx === current) btn.classList.add('current');
+  });
 }
 
 function handleKeydown(e) {
@@ -184,12 +241,22 @@ function renderQuestion() {
   const num = current + 1;
   const isCheckbox = q.required > 1;
   const inReview = submitted || revealed[current];
+  const locked = inReview || committed[current];
 
   $('questionText').textContent = num + '. ' + q.question;
   $('requiredBadge').textContent =
     'Select ' + q.required + ' answer' + (q.required > 1 ? 's' : '');
   $('requiredBadge').classList.remove('hidden');
-  $('progressText').textContent = 'Question ' + num + ' of ' + questions.length;
+  const done = committed.filter(Boolean).length;
+  $('progressText').textContent = rangeLabel
+    ? rangeLabel
+    : 'Question ' +
+      num +
+      ' of ' +
+      questions.length +
+      ' \u00b7 ' +
+      (questions.length - done) +
+      ' to go';
   $('progressFill').style.width = Math.round((num / questions.length) * 100) + '%';
 
   $('optionsList').innerHTML = q.options
@@ -204,7 +271,7 @@ function renderQuestion() {
         cls += ' selected';
       }
       const checkedAttr = selected ? ' checked' : '';
-      const disabledAttr = inReview ? ' disabled' : '';
+      const disabledAttr = locked ? ' disabled' : '';
       const nameAttr = isCheckbox ? 'opt-' + current : 'opt-' + current + '-r';
       return (
         '<label class="' +
@@ -235,7 +302,7 @@ function renderQuestion() {
     })
     .join('');
 
-  if (!inReview) {
+  if (!locked) {
     q.options.forEach(function (opt, i) {
       const input = document.querySelector('#optionsList input[data-idx="' + i + '"]');
       if (input) {
@@ -246,10 +313,15 @@ function renderQuestion() {
     });
   }
 
+  const atLast = current === questions.length - 1;
+  const nextDisabled = retakeActive && atLast ? false : atLast;
+  const nextLabel = retakeActive && atLast ? 'Finish' : atLast ? 'Last Question' : 'Next';
   $('prevBtn').disabled = current === 0;
-  $('nextBtn').disabled = retakeActive && current === questions.length - 1 ? false : current === questions.length - 1;
-  $('nextBtn').textContent =
-    retakeActive && current === questions.length - 1 ? 'Finish' : current === questions.length - 1 ? 'Last Question' : 'Next';
+  $('nextBtn').disabled = nextDisabled;
+  $('nextBtn').textContent = nextLabel;
+  $('bottomPrevBtn').disabled = current === 0;
+  $('bottomNextBtn').disabled = nextDisabled;
+  $('bottomNextBtn').textContent = nextLabel;
   $('revealBtn').classList.toggle('hidden', submitted);
   $('revealBtn').disabled = revealed[current];
   $('revealBtn').textContent = revealed[current] ? 'Answer Revealed' : 'Reveal Answer';
@@ -258,25 +330,20 @@ function renderQuestion() {
   $('reviewBanner').classList.toggle('hidden', !submitted);
   setFeedback('', '');
   updateStats();
+  updateNavigator();
 }
 
 function updateStats() {
   if (!$('statCorrect')) return;
   let correct = 0;
   let wrong = 0;
-  let toGo = 0;
   questions.forEach(function (q, i) {
-    const answered = answers[i].size === q.required;
-    if (!answered) {
-      toGo++;
-      return;
-    }
-    if (setsEqual(answers[i], q.correctTexts)) correct++;
+    if (!committed[i]) return;
+    if (results[i]) correct++;
     else wrong++;
   });
   $('statCorrect').textContent = correct;
   $('statWrong').textContent = wrong;
-  $('statToGo').textContent = toGo;
 }
 
 function onOptionChange(i, isCheckbox) {
@@ -304,6 +371,12 @@ function onOptionChange(i, isCheckbox) {
   if (msg) setFeedback(msg, 'error');
 }
 
+function commitCurrent() {
+  if (committed[current]) return;
+  committed[current] = true;
+  results[current] = setsEqual(answers[current], questions[current].correctTexts);
+}
+
 function go(dir) {
   const target = current + dir;
   if (target < 0) return;
@@ -325,6 +398,7 @@ function go(dir) {
       );
       return;
     }
+    commitCurrent();
   }
   current = target;
   renderQuestion();
@@ -332,6 +406,7 @@ function go(dir) {
 
 function revealAnswer() {
   revealed[current] = true;
+  commitCurrent();
   renderQuestion();
   setFeedback('Correct answer is highlighted in green.', 'success');
 }
@@ -361,15 +436,23 @@ function submitExam() {
   elapsedSeconds = Math.round((Date.now() - startTime) / 1000);
   $('timer').textContent = formatTime(elapsedSeconds);
 
-  const results = questions.map(function (qq, i) {
-    return { index: i, right: setsEqual(answers[i], qq.correctTexts) };
+  questions.forEach(function (qq, i) {
+    if (!committed[i]) {
+      committed[i] = true;
+      results[i] = setsEqual(answers[i], qq.correctTexts);
+    }
   });
+
   const rightCount = results.filter(function (r) {
-    return r.right;
+    return r === true;
   }).length;
-  const wrongList = results.filter(function (r) {
-    return !r.right;
-  });
+  const wrongList = questions
+    .map(function (qq, i) {
+      return { index: i, right: results[i] };
+    })
+    .filter(function (r) {
+      return !r.right;
+    });
 
   originalResult = { correct: rightCount, wrong: wrongList.length, total: questions.length };
 
@@ -456,7 +539,7 @@ function reviewQuestion(idx) {
 function startRetake() {
   const wrongList = questions
     .map(function (qq, i) {
-      return { index: i, right: setsEqual(answers[i], qq.correctTexts) };
+      return { index: i, right: results[i] };
     })
     .filter(function (r) {
       return !r.right;
@@ -475,6 +558,7 @@ function startRetake() {
 function beginRetake(subset) {
   retakeActive = true;
   submitted = false;
+  rangeLabel = '';
   questions = subset;
   current = 0;
   answers = subset.map(function () {
@@ -482,6 +566,12 @@ function beginRetake(subset) {
   });
   revealed = subset.map(function () {
     return false;
+  });
+  committed = subset.map(function () {
+    return false;
+  });
+  results = subset.map(function () {
+    return null;
   });
   $('scoreArea').classList.add('hidden');
   $('questionArea').classList.remove('hidden');
@@ -502,15 +592,23 @@ function finishRetake() {
     return;
   }
 
-  const results = questions.map(function (qq, i) {
-    return { index: i, right: setsEqual(answers[i], qq.correctTexts) };
+  questions.forEach(function (qq, i) {
+    if (!committed[i]) {
+      committed[i] = true;
+      results[i] = setsEqual(answers[i], qq.correctTexts);
+    }
   });
+
   const rightCount = results.filter(function (r) {
-    return r.right;
+    return r === true;
   }).length;
-  const wrongList = results.filter(function (r) {
-    return !r.right;
-  });
+  const wrongList = questions
+    .map(function (qq, i) {
+      return { index: i, right: results[i] };
+    })
+    .filter(function (r) {
+      return !r.right;
+    });
   retakeRounds.push({
     correct: rightCount,
     wrong: wrongList.length,
